@@ -18,8 +18,9 @@ bool closeState = true;
 bool openState = false;
 
 void setup() {
+  Wire.begin(21,22);
   Serial.begin(115200);
-  lcd.begin(0,0);
+  lcd.begin(16,2);
   lcd.backlight();
   lcd.setCursor(0, 0);
   lcd.print("Garage door open");
