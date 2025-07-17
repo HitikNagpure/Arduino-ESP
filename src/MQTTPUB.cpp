@@ -17,7 +17,6 @@ const char* mqtt_pass = "AdafruitIO_AIO_key";
 #define DHTPIN 4
 #define DHTTYPE DHT11
 DHT dht(DHTPIN, DHTTYPE);
-
 WiFiClient espClient;
 PubSubClient client(espClient);
 

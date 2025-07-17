@@ -6,7 +6,7 @@ const char* ssid = "WIFISSID"; // Replace with your WiFi SSID
 const char* password = "WIFIPassword"; // Replace with your WiFi credentials
 const char* mqttServer = "io.adafruit.com";
 const char* mqttUser = "ADAFRUIT_IO_USERNAME"; // Replace with your Adafruit IO username
-const char* mqttKey = "AdafruitIOKey";
+const char* mqttKey = "REPLACE_WITH_YOUR_KEY"; // Replace with your Adafruit IO key
 const char* tempTopic = "ADAFRUIT_IO_USERNAME/feeds/temperature";
 const char* humTopic = "ADAFRUIT_IO_USERNAME/feeds/humidity";
 
