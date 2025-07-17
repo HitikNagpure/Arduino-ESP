@@ -24,7 +24,7 @@ char ssid[] = "Airtel_hrit_9689";
 char pass[] = "asdfghjk";
 
 BlynkTimer timer;
-// LCD I2C config (check your LCD address: 0x27 or 0x3F)
+
 LiquidCrystal_I2C lcd(0x27, 16, 2);
 
 // Distance threshold in cm
@@ -75,9 +75,9 @@ int measureDistance() {
 void setup() {
   Wire.begin(21, 22);       // I2C pins for ESP32
   Serial.begin(115200);
-  delay(1000);               // Let things settle
+  delay(1000);          
 
-  lcd.init();                // Correct: use init() instead of begin()
+  lcd.init();             
   lcd.backlight();           // Turn on backlight
 
   lcd.setCursor(0, 0);       // Start at top-left corner
@@ -94,7 +94,7 @@ void setup() {
 
 
   lcd.setCursor(0, 0);
-  lcd.print("Smart Room Init");
+  lcd.print("Smart Room Light");
   delay(1500);
   lcd.clear();
 
@@ -141,13 +141,13 @@ void loop() {
     if (!manualLEDControl) {
       if (distance < distanceThreshold) {
       digitalWrite(LED_PIN, HIGH);
-      Blynk.virtualWrite(V2, digitalRead(LED_PIN)); // Update buzzer status
+      Blynk.virtualWrite(V2, digitalRead(LED_PIN)); // Update LED status
       ledOn = true;
       Blynk.virtualWrite(V2, ledOn); // Sync LED status
 
     } else {
       digitalWrite(LED_PIN, LOW);
-      Blynk.virtualWrite(V2, digitalRead(LED_PIN)); // Update buzzer status
+      Blynk.virtualWrite(V2, digitalRead(LED_PIN)); // Update LED status
       ledOn = false;
     }
   }
@@ -189,7 +189,7 @@ if (currentTime - lastPrintTime >= 1000) { // Print every 1 second
     lcd.noBacklight(); // Turn off backlight to save power
 
     // Configure wakeup on IR_PIN (must be RTC GPIO)
-    esp_sleep_enable_ext0_wakeup((gpio_num_t)IR_PIN, 0); // Wake up on LOW
+    esp_sleep_enable_ext0_wakeup((gpio_num_t)IR_PIN, 0);
 
     delay(100); // Let serial flush
     esp_light_sleep_start();  // Enter light sleep
